@@ -25,12 +25,12 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::latest()->get();
-        return view('products.index', compact('products'));
+        return view('Products.index', compact('products'));
     }
 
     public function create()
     {
-        return view('products.create');
+        return view('Products.create');
     }
 
     public function store(Request $request)
@@ -51,7 +51,7 @@ class ProductController extends Controller
 
     public function edit(Product $product)
     {
-        return view('products.edit', compact('product'));
+        return view('Products.edit', compact('product'));
     }
 
     public function update(Request $request, Product $product)
@@ -66,7 +66,7 @@ class ProductController extends Controller
 
         $product->update($request->all());
 
-        return redirect()->route('products.index')
+        return redirect()->route('Products.index')
                          ->with('success', 'Produk berhasil diperbarui!');
     }
 
@@ -74,7 +74,7 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return redirect()->route('products.index')
+        return redirect()->route('Products.index')
                          ->with('success', 'Produk berhasil dihapus!');
     }
 }
