@@ -74,7 +74,7 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return redirect()->route('Products.index')
+        return redirect()->route('products.index')
                          ->with('success', 'Produk berhasil dihapus!');
     }
 }
