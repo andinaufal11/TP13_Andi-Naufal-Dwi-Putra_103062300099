@@ -9,10 +9,17 @@ class ProductController extends Controller
 {
     public function dashboard()
     {
+        // 1. Hitung Total Produk
         $totalProducts = Product::count();
+
+        // 2. Hitung Stok Menipis (kurang dari 5)
         $lowStock = Product::where('stock', '<', 5)->count();
 
-        return view('dashboard', compact('totalProducts', 'lowStock'));
+        // 3. (BARU) Hitung Jumlah Toko Unik untuk ditampilkan di Dashboard
+        $totalToko = Product::distinct('toko')->count('toko');
+
+        // Kirim ketiga variabel ke view
+        return view('dashboard', compact('totalProducts', 'lowStock', 'totalToko'));
     }
 
     public function index()
